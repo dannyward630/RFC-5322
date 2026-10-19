@@ -313,7 +313,7 @@ class AddressParser:
                     result.append(" ")
                     index = next_index
                     continue
-            if char in {'"', "\\"} or ord(char) < 32 or ord(char) == 127:
+            if char in {'"', "\\"} or (ord(char) < 32 and char != "\t") or ord(char) == 127:
                 raise ParseError("invalid qcontent")
             result.append(char)
             index += 1
